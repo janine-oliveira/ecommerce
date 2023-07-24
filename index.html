@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pérola</title>
+    <link rel="icon" href="./32.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+  </script>
+    <script src="https://kit.fontawesome.com/3c99808b33.js" crossorigin="anonymous"></script>
+
+    <script src="main.js"></script>
+
+</head>
+<body>
+   
+    <div id="menu">
+        <img src="./logoPerolaFundo.png" style="height: 150px; width: 150px;">
+        <ul>
+            <li onclick="mostrarTodos()">Todos os produtos</li>
+            <li onclick="mostrarFeminino()">Feminino</li>
+            <li onclick="mostrarMasculino()">Masculino</li>
+            <li onclick="mostrarInfantil()">Infantil</li>       
+        </ul>
+        
+        <button onclick="adicionarModalCarro(carrinho);" class="iconModal" type="button" data-toggle="modal" data-target="#modalCarrinho">
+            <i class="fa-solid fa-cart-shopping fa-xl" style="color: #9d2091;" id="carrinho">
+</i>
+          </button>
+
+          <button onclick="adicionarModal(favoritos);" class="iconModal" type="button" data-toggle="modal" data-target="#modalCurtir">
+        <i class="fa-solid fa-heart fa-xl" style="color: #9d2091;" id="curtir"></i>
+        </button>
+
+        <div id="pesquisa">
+            <input type="text" id="text">
+            <button id="pesquisar" onclick="pesquisarPalavra();">Pesquisar</button>
+        </div>
+        
+    </div>
+
+     <!-- Modal Carrinho-->
+    <div class="container">     
+        <div class="modal fade" id="modalCarrinho" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalLabel">Carrinho</h4>
+              </div>
+              <div class="modal-body" id="carrinhoCompras">
+                
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="corBotaoModal">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Modal Curtir-->
+    <div class="container">     
+        <div class="modal fade" id="modalCurtir" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalLabel">Favoritos</h4>
+              </div>
+              <div class="modal-body" id="listaFavoritos">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="corBotaoModal" >Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div id="myCarrossel" class="carousel slide" >
+        
+        <div class="carousel-inner">
+            
+            <div class="item active">
+              
+                <img src="./1.png">
+              
+            </div>
+      
+            <div class="item">
+            
+                <img src="./2.png">
+
+            </div>
+            <div class="item">
+            
+                <img src="./3.png">
+
+            </div>
+          
+        </div>
+      
+          
+          <a class="left carousel-control" href="#myCarrossel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+      
+          <a class="right carousel-control" href="#myCarrossel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+    </div>
+
+    <!-- Produtos -->
+    <div class="container" >
+      <div class="row">
+
+        <div class="col-md-6 col-lg-3" id="f1">
+          <img src="./feminino/1.jpg" class="img-thumbnail">
+          <h5>Camisa Xadrez Vermelho</h5>
+          <span >R$ 48,90</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf1" onclick="curtir('f1')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof1" onclick="carro('f1')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="f2">
+          <img src="./feminino/2.jpg" class="img-thumbnail">
+         
+          <h5>Camisa Xadrez Preto</h5>
+          <span>R$ 37,58</span>
+          
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf2" onclick="curtir('f2')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof2" onclick="carro('f2')">
+          </i>
+      
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="f3">
+          <img src="./feminino/3.jpg" class="img-thumbnail">
+          <h5>Blusa Casual</h5>
+          <span>R$ 51,20</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf3" onclick="curtir('f3')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof3" onclick="carro('f3')"></i>
+          
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="f4">
+          <img src="./feminino/4.jpg" class="img-thumbnail">
+          <h5>Blusa Casual Salmão</h5>
+          <span>R$ 32,25</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf4" onclick="curtir('f4')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof4" onclick="carro('f4')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="f5">
+          <img src="./feminino/5.jpg" class="img-thumbnail">
+          <h5>Blusa Animal Print</h5>
+          <span>R$ 47,20</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf5" onclick="curtir('f5')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof5" onclick="carro('f5')"></i>
+
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="f6">
+          <img src="./feminino/6.jpg" class="img-thumbnail">
+          <h5>Blusa preta</h5>
+          <span >R$ 36,90</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirf6" onclick="curtir('f6')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhof6" onclick="carro('f6')"></i>
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="m1">
+          <img src="./masculino/1.jpg" class="img-thumbnail">
+          <h5>Camisa Xadrez</h5>
+          <span >R$ 48,60</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm1" onclick="curtir('m1')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom1" onclick="carro('m1')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="m2">
+          <img src="./masculino/2.jpg" class="img-thumbnail">
+          <h5>Camisa Preta</h5>
+          <span >R$ 36,25</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm2" onclick="curtir('m2')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom2" onclick="carro('m2')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="m3">
+          <img src="./masculino/3.jpg" class="img-thumbnail">
+          <h5>Blusa Casual Geek</h5>
+          <span >R$ 28,60</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm3" onclick="curtir('m3')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom3" onclick="carro('m3')"></i>
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="m4">
+          <img src="./masculino/4.jpg" class="img-thumbnail">
+          <h5>Camisa Esporte</h5>
+          <span >R$ 28,60</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm4" onclick="curtir('m4')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom4" onclick="carro('m4')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="m5">
+          <img src="./masculino/5.jpg" class="img-thumbnail">
+          <h5>Camisa Praia</h5>
+          <span >R$ 38,60</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm5" onclick="curtir('m5')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom5" onclick="carro('m5')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="m6">
+          <img src="./masculino/6.jpg" class="img-thumbnail">
+          <h5>Camisa Social</h5>
+          <span >R$ 48,90</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtirm6" onclick="curtir('m6')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhom6" onclick="carro('m6')"></i>
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="i1">
+          <img src="./infantil/1.jpg" class="img-thumbnail">
+          <h5>Blusa Rosa Stitch</h5>
+          <span >R$ 38,90</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri1" onclick="curtir('i1')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi1" onclick="carro('i1')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="i2">
+          <img src="./infantil/2.jpg" class="img-thumbnail">
+          <h5>Camisa Branca Sonic</h5>
+          <span >R$ 28,00</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri2" onclick="curtir('i2')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi2" onclick="carro('i2')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="i3">
+          <img src="./infantil/3.jpg" class="img-thumbnail">
+          <h5>Vestido Xadrez Vermelho</h5>
+          <span >R$ 26,90</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri3" onclick="curtir('i3')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi3" onclick="carro('i3')"></i>
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="i4">
+          <img src="./infantil/4.jpg" class="img-thumbnail">
+          <h5>Camisa Dinossauros</h5>
+          <span >R$ 35,62</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri4" onclick="curtir('i4')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi4" onclick="carro('i4')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="i5">
+          <img src="./infantil/5.jpg" class="img-thumbnail">
+          <h5>Blusa de Frio Minie</h5>
+          <span >R$ 59,00</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri5" onclick="curtir('i5')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi5" onclick="carro('i5')"></i>
+        </div>
+  
+        <div class="col-md-6 col-lg-3" id="i6">
+          <img src="./infantil/6.jpg" class="img-thumbnail">
+          <h5>Vestido Animal Print</h5>
+          <span >R$ 46,28</span>
+          <i class="fa-solid fa-heart fa" style="color: #9d2091;" id="curtiri6" onclick="curtir('i6')"></i>
+           <i class="fa-solid fa-cart-shopping fa" style="color: #9d2091;" id="carrinhoi6" onclick="carro('i6')"></i>
+        </div>
+  
+      </div>
+      
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-lg-3">
+            <img src="./img2.png">
+            
+          </div>
+          <div class="col-md-2 col-lg-3">
+            <p>Nos siga nas redes Sociais</p>
+            <a href="https://www.linkedin.com/in/janine-de-oliveira/" target="_blank"><i class="fa-brands fa-linkedin fa-xl" style="color: #3178f2;"></i></a>
+            <a href="https://www.instagram.com/janine_oliveiraa/" target="_blank">            <i class="fa-brands fa-instagram fa-xl" style="color: #e668e8;"></i>
+</a>
+            <a href="https://github.com/janine-oliveira" target="_blank"><i class="fa-brands fa-github fa-xl"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"> <i class="fa-brands fa-facebook fa-xl" style="color: #3d81f5;"></i></a>
+           
+            <a href="https://www.tiktok.com/" target="_blank"><i class="fa-brands fa-tiktok fa-xl" style="color: #353036;"></i></a>
+            
+            
+          </div>
+          <div class="col-md-2 col-lg-3">
+            <p>Formas de Pagamento</p>
+            <i class="fa-brands fa-paypal fa-xl" style="color: #336dd1;"></i>
+            <i class="fa-solid fa-barcode fa-xl"></i>
+            <i class="fa-brands fa-cc-visa fa-xl" style="color: #b30923;"></i>
+            <i class="fa-brands fa-cc-mastercard fa-xl" style="color: #e25915;"></i>
+            
+          </div>
+        </div>
+        <div class="row">
+          <p>©2023 Janine de Oliveira</p>
+        </div>
+      </div>
+    </footer>
+  
+</body>
+</html>
